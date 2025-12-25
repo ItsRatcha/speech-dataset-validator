@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task - {{ lang.name }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .audio-list { display:flex; flex-direction:column; gap:10px; max-width:700px }
+        .audio-item { padding:8px; border:1px solid #eee; border-radius:4px }
+        .back { display:inline-block; margin-bottom:12px }
+    </style>
+</head>
+<body>
+    <a class="back" href="{% url 'langselect' %}">&larr; Back to languages</a>
+    <h1>Task: {{ lang.name }}</h1>
+
+    <div class="audio-list">
+        {% for audio in audios %}
+            <div class="audio-item">
+                <div><strong>Audio #{{ audio.id }}</strong></div>
+                <div>Transcript: {{ audio.transcript }}</div>
+            <div></div><audio controls>
+                <source src="{{ audio.audio }}" type="audio/mpeg">
+            </audio></div>
+
+            </div>
+        {% empty %}
+            <div>No audio items for this language.</div>
+        {% endfor %}
+    </div>
+</body>
+</html>

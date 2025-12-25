@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Language</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .lang-list { display: flex; flex-direction: column; gap: 8px; max-width: 400px; }
+        .lang-item { display: flex; justify-content: space-between; align-items: center; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        .btn { padding: 6px 10px; background:#007bff; color:#fff; border:none; border-radius:4px; text-decoration:none }
+    </style>
+</head>
+<body>
+    <h1>Select Language</h1>
+    <div class="lang-list">
+        {% for lang in langs %}
+            <div class="lang-item">
+                <div>{{ lang.name }}</div>
+                <div>
+                    <a class="btn" href="{% url 'task' lang.id %}">Open</a>
+                </div>
+            </div>
+        {% empty %}
+            <div>No languages available.</div>
+        {% endfor %}
+    </div>
+</body>
+</html>

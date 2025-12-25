@@ -20,5 +20,7 @@ import core.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', core.views.index),
+    path('', core.views.index, name='index'),
+    path('langselect/', core.views.langselect, name='langselect'),
+    path('task/<int:lang_id>/', core.views.task, name='task'),
 ]
